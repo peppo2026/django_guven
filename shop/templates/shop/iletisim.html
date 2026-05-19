@@ -1,0 +1,386 @@
+{% extends "shop/base.html" %}
+
+{% block content %}
+
+
+<style>
+/* MOBILE CONTACT PAGE */
+@media (max-width: 900px) {
+
+    .filter-box {
+        display: none !important;
+    }
+
+    div[style*="background:white; padding:25px"] {
+        width: 100% !important;
+        max-width: 480px !important;
+        box-sizing: border-box !important;
+        margin: 0 auto !important;
+        padding: 12px !important;
+    }
+
+    h1 {
+        font-size: 24px !important;
+        line-height: 30px !important;
+        text-align: center !important;
+        margin-bottom: 16px !important;
+        border-bottom: 2px solid #d6a600 !important;
+    }
+
+    h2 {
+        font-size: 21px !important;
+        text-align: center !important;
+        margin-bottom: 12px !important;
+    }
+
+    div[style*="display:grid; grid-template-columns:1fr 1fr"] {
+        display: block !important;
+    }
+
+    div[style*="background:#f8f8f8; border:1px solid #ddd; padding:20px"],
+    div[style*="background:#fff8cc; border:1px solid #d6a600; padding:20px"] {
+        margin-bottom: 14px !important;
+        padding: 14px !important;
+        border-radius: 12px !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important;
+        min-height: auto !important;
+    }
+
+    p {
+        font-size: 15px !important;
+        line-height: 23px !important;
+    }
+
+    table {
+        width: 100% !important;
+        font-size: 15px !important;
+        line-height: 22px !important;
+        table-layout: fixed !important;
+    }
+
+    table td {
+        display: block !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        padding: 5px 0 !important;
+        border-left: 0 !important;
+        border-right: 0 !important;
+    }
+
+    table td:first-child {
+        font-weight: bold !important;
+        color: #111 !important;
+        padding-top: 10px !important;
+    }
+
+    table td:last-child {
+        color: #444 !important;
+        padding-bottom: 8px !important;
+        border-bottom: 1px solid #ddd !important;
+    }
+
+    div[style*="display:flex; align-items:center"] {
+        justify-content: center !important;
+        text-align: center !important;
+    }
+
+    div[style*="display:flex; align-items:center"] img {
+        max-width: 160px !important;
+        height: auto !important;
+    }
+
+    iframe {
+        height: 230px !important;
+        border-radius: 10px !important;
+    }
+
+    div[style*="margin-top:35px; background:#f8f8f8"] {
+        margin-top: 16px !important;
+        padding: 14px !important;
+        border-radius: 12px !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important;
+    }
+
+    div[style*="display:grid; grid-template-columns:1fr 1fr; gap:25px"] {
+        display: block !important;
+    }
+
+    div[style*="background:#f7f7f7; border:1px solid #ccc"] {
+        margin-bottom: 14px !important;
+        padding: 10px !important;
+        border-radius: 12px !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important;
+    }
+
+    div[style*="background:#f7f7f7; border:1px solid #ccc"] img {
+        height: 190px !important;
+        border-radius: 8px !important;
+    }
+
+    div[style*="margin-top:35px; padding:18px; background:#fff8cc"] {
+        margin-top: 18px !important;
+        padding: 14px !important;
+        border-radius: 12px !important;
+        font-size: 15px !important;
+        line-height: 23px !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important;
+    }
+
+    div[style*="margin-top:25px"] {
+        text-align: center !important;
+    }
+
+    div[style*="margin-top:25px"] button {
+        width: 100% !important;
+        max-width: 280px !important;
+        padding: 11px !important;
+        border: 0 !important;
+        border-radius: 22px !important;
+        background: #1597e5 !important;
+        color: white !important;
+        font-size: 15px !important;
+        font-weight: bold !important;
+    }
+}
+</style>
+
+
+<div style="background:white; padding:25px; font-family:Arial, sans-serif; color:#222;">
+
+    <h1 style="font-size:28px; color:#111; border-bottom:2px solid #d6a600; padding-bottom:10px; margin-bottom:25px;">
+        İLETİŞİM BİLGİLERİMİZ
+    </h1>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:25px; align-items:start;">
+
+        <!-- SOL: İLETİŞİM BİLGİLERİ -->
+        <div style="background:#f8f8f8; border:1px solid #ddd; padding:20px; min-height:300px;">
+
+            <h2 style="font-size:24px; margin-top:0; color:#000;">
+                Güven Otomotiv
+            </h2>
+
+            <p style="font-size:17px; line-height:28px; margin-bottom:20px;">
+                Opel ve Chevrolet yedek parça ihtiyaçlarınız için bizimle iletişime geçebilirsiniz.
+                Ürün uyumluluğu, sipariş, ödeme, kargo ve iade konularında yardımcı olmaktayız.
+            </p>
+
+            <table style="width:100%; border-collapse:collapse; font-size:16px; line-height:26px;">
+                <tr>
+                    <td style="width:130px; font-weight:bold; padding:8px 0;">Firma</td>
+                    <td style="padding:8px 0;">
+                        Güven Otomotiv<br>
+                        Güven Otomotiv Salihe Güven ve Ort.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="font-weight:bold; padding:8px 0; vertical-align:top;">Adres</td>
+                    <td style="padding:8px 0;">
+                        İstanbul yolu Dökmeci San Merkez<br>
+                        Bahçekapı Mahallesi 2500. Cadde No:11/5<br>
+                        06797 Etimesgut / ANKARA
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="font-weight:bold; padding:8px 0;">Telefon</td>
+                    <td style="padding:8px 0;">
+                        <b>0 (312) 278 08 18</b><br>
+                        <b>0 (532) 260 85 45</b>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="font-weight:bold; padding:8px 0;">E-Posta</td>
+                    <td style="padding:8px 0;">
+                        info@guvenotoyedek.com
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="font-weight:bold; padding:8px 0;">Web Site</td>
+                    <td style="padding:8px 0;">
+                        https://guvenotoyedek.com
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+
+        <!-- SAĞ: ÇALIŞMA SAATLERİ + BANKA -->
+        <div style="display:flex; flex-direction:column; gap:20px;">
+
+            <div style="background:#fff8cc; border:1px solid #d6a600; padding:20px;">
+
+                <h2 style="font-size:22px; margin-top:0; color:#000;">
+                    Çalışma Saatlerimiz
+                </h2>
+
+                <table style="width:100%; font-size:16px; line-height:28px;">
+                    <tr>
+                        <td style="font-weight:bold;">Pazartesi</td>
+                        <td>09:00 - 19:00</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight:bold;">Salı</td>
+                        <td>09:00 - 19:00</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight:bold;">Çarşamba</td>
+                        <td>09:00 - 19:00</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight:bold;">Perşembe</td>
+                        <td>09:00 - 19:00</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight:bold;">Cuma</td>
+                        <td>09:00 - 19:00</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight:bold;">Cumartesi</td>
+                        <td>09:00 - 18:00</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight:bold;">Pazar</td>
+                        <td>Tatil</td>
+                    </tr>
+                </table>
+
+            </div>
+
+            <div style="background:#f8f8f8; border:1px solid #ddd; padding:20px;">
+
+                <h2 style="font-size:22px; margin-top:0; color:#000;">
+                    Banka Bilgilerimiz
+                </h2>
+
+                <div style="display:flex; align-items:center; gap:15px; margin-bottom:15px;">
+                    <img src="/static/images/dizayn/vakifbank.gif"
+                        alt="VakıfBank"
+                        style="height:38px; object-fit:contain;">
+
+                    
+                </div>
+
+                <table style="width:100%; border-collapse:collapse; font-size:16px;">
+                    <tr>
+                        <td style="width:130px; font-weight:bold; border:1px solid #888; padding:6px;">Hesap Adı</td>
+                        <td style="border:1px solid #888; padding:6px;">Salihe Güven ve Ort.</td>
+                    </tr>
+
+                    <tr>
+                        <td style="font-weight:bold; border:1px solid #888; padding:6px;">Hesap No</td>
+                        <td style="border:1px solid #888; padding:6px;">44 5004 2651 02</td>
+                    </tr>
+
+                    <tr>
+                        <td style="font-weight:bold; border:1px solid #888; padding:6px;">Şube</td>
+                        <td style="border:1px solid #888; padding:6px;">Şaşmaz</td>
+                    </tr>
+
+                    <tr>
+                        <td style="font-weight:bold; border:1px solid #888; padding:6px;">IBAN</td>
+                        <td style="border:1px solid #888; padding:6px;">
+                            TR60 0001 5001 5800 7304 6062 69
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- HARİTA -->
+    <div style="margin-top:35px; background:#f8f8f8; border:1px solid #ddd; padding:20px;">
+
+        <h2 style="font-size:24px; margin-top:0; color:#000;">
+            Harita
+        </h2>
+
+        <p style="font-size:16px; line-height:26px;">
+            Mağazamıza gelmeden önce konum üzerinden yol tarifi alabilirsiniz.
+        </p>
+
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6117.935861112164!2d32.717002!3d39.942107!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x98ee4b286a26e227!2sG%C3%9CVEN+OTO+(Opel+Yedek+Par%C3%A7a)!5e0!3m2!1str!2str!4v1489588188062"
+            width="100%"
+            height="330"
+            frameborder="0"
+            style="border:1px solid #ccc;"
+            allowfullscreen="">
+        </iframe>
+
+    </div>
+
+
+    <!-- MAĞAZA GÖRSELLERİ -->
+    <div style="margin-top:35px;">
+
+        <h2 style="font-size:24px; color:#000; margin-bottom:15px;">
+            Mağazamızdan Görseller
+        </h2>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:25px;">
+
+            <div style="background:#f7f7f7; border:1px solid #ccc; padding:12px; text-align:center;">
+                <img src="/static/images/dukkan1.jpg"
+                     alt="Güven Otomotiv Dükkan Dış Görünüm"
+                     style="width:100%; height:320px; object-fit:cover; border:1px solid #aaa;">
+
+                <div style="margin-top:10px; font-weight:bold; color:#444; font-size:16px;">
+                    Güven Otomotiv Dış Görünüm
+                </div>
+            </div>
+
+            <div style="background:#f7f7f7; border:1px solid #ccc; padding:12px; text-align:center;">
+                <img src="/static/images/dukkan2.jpg"
+                     alt="Güven Otomotiv Mağaza Görünümü"
+                     style="width:100%; height:320px; object-fit:cover; border:1px solid #aaa;">
+
+                <div style="margin-top:10px; font-weight:bold; color:#444; font-size:16px;">
+                    Opel ve Chevrolet Yedek Parça Mağazamız
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- GÜVEN NOTU -->
+    <div style="margin-top:35px; padding:18px; background:#fff8cc; border:1px solid #d6a600; font-size:16px; line-height:28px;">
+
+        <h3 style="margin-top:0; color:#333;">
+            Bize Ulaşmadan Önce
+        </h3>
+
+        <p>
+            Ürün uyumluluğu hakkında emin değilseniz aracınızın marka, model, motor tipi ve üretim yılını
+            belirterek bizimle iletişime geçebilirsiniz.
+        </p>
+
+        <p>
+            Sipariş, ödeme, kargo, iade ve garanti işlemlerinde sipariş numaranızı belirtmeniz
+            işlemlerin daha hızlı ilerlemesini sağlar.
+        </p>
+
+    </div>
+
+
+    <div style="margin-top:25px;">
+        <a href="/">
+            <button style="padding:7px 16px;">
+                Ana Sayfaya Dön
+            </button>
+        </a>
+    </div>
+
+</div>
+
+{% endblock %}

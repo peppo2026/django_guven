@@ -1,0 +1,208 @@
+{% extends "shop/base.html" %}
+
+{% block content %}
+
+<style>
+/* SADECE MOBIL SIPARIS BASARILI / ODEME BILGISI DUZENI */
+@media (max-width: 900px) {
+
+    .filter-box {
+        display: none !important;
+    }
+
+    div[style*="width:900px"] {
+        width: 100% !important;
+        max-width: 460px !important;
+        box-sizing: border-box !important;
+        margin: 16px auto !important;
+        padding: 18px !important;
+        border: 1px solid #ddd !important;
+        border-radius: 10px !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important;
+    }
+
+    h1 {
+        font-size: 23px !important;
+        line-height: 30px !important;
+        margin-bottom: 22px !important;
+    }
+
+    p {
+        font-size: 15px !important;
+        line-height: 24px !important;
+    }
+
+    div[style*="font-size:26px"] {
+        font-size: 22px !important;
+        text-align: center !important;
+        margin-top: 24px !important;
+    }
+
+    table {
+        width: 100% !important;
+        font-size: 14px !important;
+        table-layout: fixed !important;
+        word-break: break-word !important;
+    }
+
+    table td {
+        padding: 7px 5px !important;
+        vertical-align: top !important;
+    }
+
+    table td:nth-child(1) {
+        width: 95px !important;
+    }
+
+    table td:nth-child(2) {
+        width: 12px !important;
+        text-align: center !important;
+    }
+
+    table td:nth-child(3) {
+        width: auto !important;
+    }
+
+    div[style*="margin-top:45px"] {
+        margin-top: 24px !important;
+        background: #f8f8f8 !important;
+        border: 1px solid #ddd !important;
+        border-radius: 8px !important;
+        padding: 12px !important;
+    }
+
+    div[style*="margin-top:30px"] {
+        text-align: center !important;
+    }
+
+    div[style*="margin-top:30px"] a {
+        display: block !important;
+        margin: 10px 0 !important;
+    }
+
+    div[style*="margin-top:30px"] button {
+        width: 100% !important;
+        max-width: 280px !important;
+        padding: 11px !important;
+        border: 0 !important;
+        border-radius: 20px !important;
+        background: #1597e5 !important;
+        color: white !important;
+        font-size: 15px !important;
+        font-weight: bold !important;
+    }
+}
+</style>
+
+
+<div style="width:900px; margin:0 auto; background:white; padding:25px; font-family:Arial, sans-serif; color:#444;">
+
+    <h1 style="text-align:center; color:#000; font-size:28px; margin-bottom:35px;">
+        HAVALE / EFT İLE ÖDEME
+    </h1>
+
+    <p style="font-size:18px;">
+        Sayın
+        <b>
+            {% if request.user.first_name or request.user.last_name %}
+                {{ request.user.first_name }} {{ request.user.last_name }}
+            {% else %}
+                {{ request.user.username }}
+            {% endif %}
+        </b>,
+    </p>
+
+    <p style="font-size:18px; line-height:28px;">
+        Sipariş verdiğiniz ürünler karşılığı
+        <b>{{ order.total_price }} TL</b>
+        tutarı aşağıdaki hesap numarasına ödeyebilirsiniz.Sipariş verdiğiniz
+        <b>{{ order.items.count }}</b>
+        kalem ürün karşılığı
+        <b>{{ order.total_price }} TL</b>
+        tutarı aşağıdaki hesap numarasına ödeyebilirsiniz.
+    </p>
+
+    <p style="font-size:18px; line-height:28px;">
+        Havale / EFT / FAST ödemelerinizde açıklama kısmına mutlaka
+        <b>Sipariş Numaranızı</b>
+        <span style="font-weight:bold; color:#cc0000;">
+            ( {{ order.id|add:"55554" }} )
+        </span>
+        ekleyiniz.
+    </p>
+
+    <p style="font-size:17px; line-height:28px;">
+        Ödemeniz tarafımıza ulaştığında siparişiniz en kısa sürede onaylanacaktır.
+        Her konuda bizimle iletişime geçebilirsiniz.
+        Müşteri memnuniyeti bizim için önemlidir.
+    </p>
+
+    <div style="margin-top:30px; font-size:26px; font-weight:bold; color:#222;">
+        VakıfBank
+    </div>
+
+    <table style="width:100%; border-collapse:collapse; margin-top:10px; font-size:18px;">
+        <tr>
+            <td style="border:1px solid #999; width:130px; font-weight:bold; padding:4px;">Hesap Adı</td>
+            <td style="border:1px solid #999; width:20px; font-weight:bold; padding:4px;">:</td>
+            <td style="border:1px solid #999; padding:4px;">0000000000</td>
+        </tr>
+
+        <tr>
+            <td style="border:1px solid #999; font-weight:bold; padding:4px;">Hesap No</td>
+            <td style="border:1px solid #999; font-weight:bold; padding:4px;">:</td>
+            <td style="border:1px solid #999; padding:4px;">0000000000</td>
+        </tr>
+
+        <tr>
+            <td style="border:1px solid #999; font-weight:bold; padding:4px;">Hesap Şubesi</td>
+            <td style="border:1px solid #999; font-weight:bold; padding:4px;">:</td>
+            <td style="border:1px solid #999; padding:4px;">0000000000</td>
+        </tr>
+
+        <tr>
+            <td style="border:1px solid #999; font-weight:bold; padding:4px;">IBAN</td>
+            <td style="border:1px solid #999; font-weight:bold; padding:4px;">:</td>
+            <td style="border:1px solid #999; padding:4px;">TR00 0000 0000 0000 0000 0000 00</td>
+        </tr>
+
+        <tr>
+            <td style="border:1px solid #999; font-weight:bold; padding:4px;">Sipariş No</td>
+            <td style="border:1px solid #999; font-weight:bold; padding:4px;">:</td>
+            <td style="border:1px solid #999; padding:4px; color:#cc0000; font-weight:bold;">
+                {{ order.id|add:"55554" }}
+            </td>
+        </tr>
+    </table>
+
+    <div style="margin-top:45px; font-size:16px; line-height:28px; color:#555;">
+        <p>
+            Havale / EFT / FAST ödemesi yalnızca onaylanmış siparişler için geçerlidir.
+        </p>
+
+        <p>
+            Banka komisyon ücretleri bankaların kendi uygulaması olup bankadan bankaya değişiklik gösterebilir.
+        </p>
+
+        <p style="font-weight:bold; color:#333;">
+            Güvenliğiniz için ödeme açıklamasına sipariş numaranızı yazmayı unutmayınız.
+        </p>
+    </div>
+
+    <div style="margin-top:30px;">
+        <a href="{% url 'account' %}">
+            <button style="padding:6px 14px;">
+                Hesabım / Siparişlerim
+            </button>
+        </a>
+
+        <a href="/" style="margin-left:10px;">
+            <button style="padding:6px 14px;">
+                Ana Sayfaya Dön
+            </button>
+        </a>
+    </div>
+
+</div>
+
+{% endblock %}

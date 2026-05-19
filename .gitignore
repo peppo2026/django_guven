@@ -1,0 +1,14 @@
+db.sqlite3
+__pycache__/
+*.pyc
+
+db_backup_before_clean_import.sqlite3
+git_status.txt
+
+static/images/urunler/k/
+static/images/urunler/orj/
+
+scraping/*.json
+scraping/*.html
+
+.env

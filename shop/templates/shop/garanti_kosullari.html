@@ -1,0 +1,486 @@
+{% extends "shop/base.html" %}
+
+{% block content %}
+
+
+<style>
+/* MOBILE LEGAL / FOOTER INFO PAGES */
+@media (max-width: 900px) {
+
+    .filter-box {
+        display: none !important;
+    }
+
+    div[style*="background:white; padding:25px"] {
+        width: 100% !important;
+        max-width: 480px !important;
+        box-sizing: border-box !important;
+        margin: 0 auto !important;
+        padding: 14px !important;
+        font-size: 15px !important;
+        line-height: 24px !important;
+        color: #222 !important;
+    }
+
+    h1 {
+        font-size: 23px !important;
+        line-height: 30px !important;
+        text-align: center !important;
+        border-bottom: 2px solid #d6a600 !important;
+        padding-bottom: 10px !important;
+        margin: 10px 0 18px 0 !important;
+    }
+
+    h3 {
+        font-size: 18px !important;
+        line-height: 25px !important;
+        background: #111 !important;
+        color: #d6a600 !important;
+        padding: 9px 10px !important;
+        border-radius: 8px !important;
+        margin: 22px 0 12px 0 !important;
+    }
+
+    h4 {
+        font-size: 16px !important;
+        color: #111 !important;
+        border-left: 4px solid #d6a600 !important;
+        padding-left: 8px !important;
+        margin: 16px 0 10px 0 !important;
+    }
+
+    p {
+        font-size: 15px !important;
+        line-height: 24px !important;
+        margin: 10px 0 !important;
+    }
+
+    ul {
+        padding-left: 20px !important;
+        margin: 10px 0 !important;
+    }
+
+    li {
+        font-size: 15px !important;
+        line-height: 23px !important;
+        margin-bottom: 7px !important;
+    }
+
+    div[style*="background:#fff8cc"],
+    div[style*="background: #fff8cc"] {
+        border-radius: 10px !important;
+        padding: 12px !important;
+        margin-top: 18px !important;
+        font-size: 15px !important;
+        line-height: 23px !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important;
+    }
+
+    div[style*="margin-top:45px"] {
+        margin-top: 24px !important;
+        padding-top: 18px !important;
+        border-top: 2px solid #d6a600 !important;
+        font-size: 15px !important;
+        line-height: 24px !important;
+    }
+
+    table {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: auto !important;
+        border-collapse: collapse !important;
+        font-size: 13px !important;
+        line-height: 20px !important;
+        margin: 12px 0 18px 0 !important;
+        background: white !important;
+    }
+
+    tbody {
+        display: table !important;
+        width: 100% !important;
+    }
+
+    th,
+    td {
+        padding: 7px 6px !important;
+        vertical-align: top !important;
+        word-break: break-word !important;
+    }
+
+    td[style*="width:180px"],
+    td[style*="width:130px"] {
+        width: 115px !important;
+    }
+
+    th {
+        background: #f1f1f1 !important;
+        font-size: 13px !important;
+    }
+
+    a {
+        word-break: break-word !important;
+    }
+}
+</style>
+
+
+<div style="background:white; padding:25px; font-family:Arial; color:#222; line-height:30px; font-size:16px;">
+
+    <h1 style="font-size:26px; color:#000; border-bottom:1px solid #ccc; padding-bottom:10px;">
+        GARANTİ KOŞULLARI
+    </h1>
+
+    <p>
+        Satın aldığınız ve <b>Garanti Belgesi</b>ne sahip ürünler, teslim aldığınız tarihten itibaren
+        ürünün Garanti Belgesi'nde belirtilen garanti süresi kapsamında, üretici ya da ithalatçı
+        firma garantisindedir.
+    </p>
+
+    <p>
+        Bu süre dahilinde ürününüze ait size en yakın yetkili servisten, ürünün faturası ve garanti
+        belgesi ile servis desteği alabilirsiniz.
+    </p>
+
+    <p>
+        Ürünlerin garanti kapsamına girebilmesi için ürünün doğru şekilde kullanılmış olması,
+        montajının usulüne uygun yapılmış olması ve kullanıcı hatası sonucu zarar görmemiş olması gerekir.
+    </p>
+
+    <p>
+        Yanlış montaj, hatalı kullanım, darbe, kırılma, kesilme, yanma, sıvı teması veya ürünün
+        amacı dışında kullanılması gibi durumlardan kaynaklanan arızalar garanti kapsamı dışında
+        değerlendirilebilir.
+    </p>
+
+    <p>
+        Elektrik ve elektronik ürünlerde montaj öncesi aracın tesisatının, sigorta bağlantılarının
+        ve ilgili soketlerin kontrol edilmesi önemlidir. Hatalı araç tesisatı veya yanlış bağlantıdan
+        kaynaklanan arızalar garanti kapsamına girmeyebilir.
+    </p>
+
+    <p>
+        Ürünle ilgili garanti veya servis işlemlerinde, ürün faturası ve varsa garanti belgesinin
+        saklanması gerekmektedir. Fatura ibraz edilemeyen ürünlerde garanti sürecinde sorun yaşanabilir.
+    </p>
+
+    <p>
+        Garanti kapsamında değerlendirilecek ürünler, öncelikle yetkili servis veya ilgili tedarikçi
+        firma tarafından incelenir. İnceleme sonucuna göre tamir, değişim veya diğer işlemler uygulanabilir.
+    </p>
+
+    <p>
+        Güven Otomotiv olarak müşterilerimizin doğru ürüne ulaşması ve ürün sonrası destek alabilmesi
+        için gerekli yönlendirmeleri yapmaya özen gösteriyoruz.
+    </p>
+
+    <div style="margin-top:25px; padding:15px; background:#fff8cc; border:1px solid #d6a600;">
+        <b>Not:</b> Garanti işlemlerinde sipariş numaranızı, ürün faturanızı ve ürünle ilgili sorunun
+        kısa açıklamasını belirtmeniz işlemlerin daha hızlı sonuçlanmasını sağlar.
+    </div>
+
+    <div style="margin-top:45px; padding-top:25px; border-top:2px solid #ccc; font-family:Arial; color:#222; line-height:30px; font-size:16px;">
+
+    <h1 style="font-size:26px; color:#000; border-bottom:1px solid #ccc; padding-bottom:10px;">
+        MESAFELİ SATIŞ SÖZLEŞMESİ
+    </h1>
+
+    <h3>MADDE 1 - TARAFLAR</h3>
+
+    <h4>SATICI</h4>
+
+    <table style="width:100%; border-collapse:collapse; margin-bottom:20px;">
+        <tr>
+            <td style="width:180px; font-weight:bold; border:1px solid #ccc; padding:6px;">Ticari Ünvanı</td>
+            <td style="border:1px solid #ccc; padding:6px;">HAKAN GÜVEN VE SALİHE GÜVEN ORTAKLIĞI</td>
+        </tr>
+        <tr>
+            <td style="font-weight:bold; border:1px solid #ccc; padding:6px;">Web Sitesi</td>
+            <td style="border:1px solid #ccc; padding:6px;">www.guvenotoyedek.com</td>
+        </tr>
+        <tr>
+            <td style="font-weight:bold; border:1px solid #ccc; padding:6px;">Telefon</td>
+            <td style="border:1px solid #ccc; padding:6px;">0 (312) 278 08 18</td>
+        </tr>
+        <tr>
+            <td style="font-weight:bold; border:1px solid #ccc; padding:6px;">E-Posta</td>
+            <td style="border:1px solid #ccc; padding:6px;">info@guvenotoyedek.com</td>
+        </tr>
+        <tr>
+            <td style="font-weight:bold; border:1px solid #ccc; padding:6px;">Adresi</td>
+            <td style="border:1px solid #ccc; padding:6px;">
+                İstanbul yolu Dökmeci San Merkez Bahçekapı Mahallesi 2500. Cadde No:11/5 Etimesgut ANKARA
+            </td>
+        </tr>
+    </table>
+
+    <h4>ALICI</h4>
+
+    <table style="width:100%; border-collapse:collapse; margin-bottom:20px;">
+        <tr>
+            <td style="width:180px; font-weight:bold; border:1px solid #ccc; padding:6px;">Adı Soyadı</td>
+            <td style="border:1px solid #ccc; padding:6px;"></td>
+        </tr>
+        <tr>
+            <td style="font-weight:bold; border:1px solid #ccc; padding:6px;">Telefon</td>
+            <td style="border:1px solid #ccc; padding:6px;"></td>
+        </tr>
+        <tr>
+            <td style="font-weight:bold; border:1px solid #ccc; padding:6px;">E-Posta Adresi</td>
+            <td style="border:1px solid #ccc; padding:6px;"></td>
+        </tr>
+        <tr>
+            <td style="font-weight:bold; border:1px solid #ccc; padding:6px;">Adresi</td>
+            <td style="border:1px solid #ccc; padding:6px;"></td>
+        </tr>
+    </table>
+
+    <h3>MADDE 2 - SÖZLEŞMENİN KONUSU VE KAPSAMI</h3>
+
+    <p>
+        İşbu Mesafeli Satış Sözleşmesi, 6502 Sayılı Tüketicinin Korunması Hakkında Kanun
+        ve Mesafeli Sözleşmeler Yönetmeliği'ne uygun olarak düzenlenmiştir.
+    </p>
+
+    <p>
+        İşbu Sözleşme'nin tarafları, işbu Sözleşme tahtında 6502 Sayılı Tüketicinin
+        Korunması Hakkında Kanun ve Mesafeli Sözleşmeler Yönetmeliği'nden kaynaklanan
+        yükümlülük ve sorumluluklarını bildiklerini ve anladıklarını kabul ve beyan ederler.
+    </p>
+
+    <p>
+        İşbu Sözleşmenin konusunu; Alıcı'nın, Güven Otomotiv'e ait www.guvenotoyedek.com
+        alan adlı web sitesinden, Satıcı'ya ait mal veya hizmetin satın alınmasına yönelik
+        elektronik olarak sipariş verdiği, Sözleşmede belirtilen niteliklere sahip mal veya
+        hizmetin satışı ve teslimi ile ilgili olarak tarafların hak ve yükümlülüklerinin
+        saptanması oluşturur.
+    </p>
+
+    <h3>MADDE 3 - SÖZLEŞME KONUSU MAL VE HİZMETİN TEMEL NİTELİKLERİ VE FİYATI</h3>
+
+    <table style="width:100%; border-collapse:collapse; margin-bottom:20px;">
+        <tr style="background:#eee;">
+            <th style="border:1px solid #ccc; padding:6px;">Ürün Kodu ve Adı</th>
+            <th style="border:1px solid #ccc; padding:6px;">Adet</th>
+            <th style="border:1px solid #ccc; padding:6px;">Satıcı Ünvanı</th>
+            <th style="border:1px solid #ccc; padding:6px;">Birim Fiyatı</th>
+            <th style="border:1px solid #ccc; padding:6px;">Toplam Tutar</th>
+        </tr>
+        <tr>
+            <td style="border:1px solid #ccc; padding:6px;"></td>
+            <td style="border:1px solid #ccc; padding:6px;"></td>
+            <td style="border:1px solid #ccc; padding:6px;">GÜVEN OTOMOTİV</td>
+            <td style="border:1px solid #ccc; padding:6px;"></td>
+            <td style="border:1px solid #ccc; padding:6px;"></td>
+        </tr>
+    </table>
+
+    <p>
+        İlan edilen fiyatlar ve vaatler güncelleme yapılana ve değiştirilene kadar geçerlidir.
+        Süreli olarak ilan edilen fiyatlar ise belirtilen süre sonuna kadar geçerlidir.
+    </p>
+
+    <p>
+        Kargo hariç toplam ürün bedeli, kargo ücreti, kargo dahil toplam bedel, ödeme şekli,
+        teslimat adresi ve teslim edilecek kişi bilgileri sipariş aşamasında belirlenir.
+    </p>
+
+    <h3>MADDE 4 - MALIN TESLİMİ VE TESLİM ŞEKLİ</h3>
+
+    <p>
+        Sözleşme Alıcı tarafından elektronik ortamda onaylanmakla yürürlüğe girmiş olup,
+        Alıcı'nın Satıcı'dan satın almış olduğu malın veya hizmetin Alıcı'ya teslim edilmesiyle
+        ifa edilmiş olur.
+    </p>
+
+    <p>
+        Mal veya hizmet, Alıcı'nın sipariş formunda ve işbu Sözleşmede belirtmiş olduğu adrese
+        ve belirtilen yetkili kişi veya kişilere teslim edilecektir.
+    </p>
+
+    <h3>MADDE 5 - TESLİMAT MASRAFLARI VE İFASI</h3>
+
+    <p>
+        Malın teslimat masrafları aksine bir hüküm yoksa Alıcı'ya aittir. Satıcı, web sitesinde
+        teslimat ücretinin kendisince karşılanacağını beyan etmişse teslimat masrafları Satıcı'ya ait olacaktır.
+    </p>
+
+    <p>
+        Malın teslimatı, Satıcı'nın stokunun müsait olması halinde ve ödemenin gerçekleşmesinden
+        sonra taahhüt edilen sürede yapılır.
+    </p>
+
+    <p>
+        Satıcı, sipariş konusu mal veya hizmet ediminin yerine getirilmesinin imkansızlaştığı
+        haller saklı kalmak kaydıyla, mal veya hizmeti Alıcı tarafından sipariş edilmesinden
+        itibaren 30 gün içinde teslim eder.
+    </p>
+
+    <p>
+        Herhangi bir nedenle Alıcı tarafından mal veya hizmet bedeli ödenmez veya yapılan ödeme
+        banka kayıtlarında iptal edilir ise, Satıcı mal veya hizmetin teslimi yükümlülüğünden
+        kurtulmuş kabul edilir.
+    </p>
+
+    <h3>MADDE 6 - ALICININ BEYAN VE TAAHHÜTLERİ</h3>
+
+    <p>
+        Alıcı, web sitesinde yer alan Sözleşme konusu mal veya hizmetin temel nitelikleri,
+        satış fiyatı, ödeme şekli, teslimat ve kargo bedeline ilişkin olarak Satıcı tarafından
+        yüklenen ön bilgileri okuyup bilgi sahibi olduğunu ve elektronik ortamda gerekli teyidi
+        verdiğini beyan eder.
+    </p>
+
+    <p>
+        Alıcı, işbu Sözleşme'yi ve Ön Bilgilendirme Formunu elektronik ortamda teyit etmekle,
+        mesafeli sözleşmelerin akdinden önce Satıcı tarafından Alıcı'ya verilmesi gereken
+        bilgileri doğru ve eksiksiz olarak edindiğini teyit etmiş olur.
+    </p>
+
+    <p>
+        Alıcı'nın, sözleşme konusu mal veya hizmeti teslim almadan önce muayene etmeksizin;
+        tahrip olmuş, kırık, ambalajı yırtılmış ve benzeri şekilde hasarlı veya ayıplı malı
+        kargo şirketinden teslim alması halinde sorumluluk kendisine aittir.
+    </p>
+
+    <p>
+        Teslimden sonra mal veya hizmetin sorumluluğu ve hasarlar Alıcı'ya aittir.
+    </p>
+
+    <h3>MADDE 7 - SATICININ BEYAN VE TAAHHÜTLERİ</h3>
+
+    <p>
+        Satıcı, Sözleşme konusu mal veya hizmetin tüketici mevzuatına uygun olarak, sağlam,
+        eksiksiz, siparişte belirtilen niteliklere uygun ve varsa garanti belgeleri ile
+        kullanım kılavuzlarıyla Alıcı'ya teslim edilmesinden sorumludur.
+    </p>
+
+    <p>
+        Satıcı, mücbir sebepler veya nakliyeyi engelleyen olağanüstü durumlar nedeniyle
+        sözleşme konusu mal veya hizmeti süresi içinde teslim edemez ise, durumu öğrendiği
+        tarihten itibaren Alıcı'ya bildirmekle yükümlüdür.
+    </p>
+
+    <h3>MADDE 8 - CAYMA HAKKI</h3>
+
+    <p>
+        Alıcı, hiçbir hukuki ve cezai sorumluluk üstlenmeksizin ve hiçbir gerekçe göstermeksizin,
+        satın aldığı mal veya hizmeti teslim tarihinden itibaren 14 gün içerisinde cayma hakkını
+        kullanarak iade edebilir.
+    </p>
+
+    <p>
+        Cayma hakkının kullanılması için süresi içerisinde Satıcı'ya mevzuat hükümlerine ve
+        web sitesindeki cayma hakkı kullanım seçeneğine uygun olarak bildirimde bulunulması şarttır.
+    </p>
+
+    <p>
+        Cayma hakkının kullanılması halinde Alıcı, cayma hakkını kullanmasından itibaren 10 gün
+        içerisinde malı Satıcı'ya geri gönderir.
+    </p>
+
+    <p>
+        Cayma hakkı kapsamında iade edilecek malın kutusu, ambalajı, varsa standart aksesuarları
+        ve varsa mal ile birlikte hediye edilen diğer ürünlerin eksiksiz ve hasarsız olarak iade
+        edilmesi gerekmektedir.
+    </p>
+
+    <p>
+        Cayma hakkının kullanılmasını takip eden 14 gün içerisinde mal bedeli Alıcı'ya ödediği
+        şekilde iade edilir. Mal, Satıcı'ya iade edilirken orijinal faturanın da iade edilmesi gerekir.
+    </p>
+
+    <h3>MADDE 9 - CAYMA HAKKININ KULLANILAMAYACAĞI HALLER</h3>
+
+    <p>
+        Cayma hakkı aşağıdaki hallerde kullanılamaz:
+    </p>
+
+    <ul>
+        <li>Fiyatı finansal piyasalardaki dalgalanmalara bağlı olarak değişen ürünlerde,</li>
+        <li>Tüketicinin istekleri veya kişisel ihtiyaçları doğrultusunda hazırlanan ürünlerde,</li>
+        <li>Hızlı bozulan veya son kullanma tarihi geçme ihtimali olan ürünlerde,</li>
+        <li>Tesliminden sonra ambalajı açılmış olup iadesi sağlık ve hijyen açısından uygun olmayan ürünlerde,</li>
+        <li>Tesliminden sonra başka ürünlerle karışan ve doğası gereği ayrıştırılması mümkün olmayan ürünlerde,</li>
+        <li>Ambalajı açılmış yazılım, kitap, ses veya görüntü kayıtları ve bilgisayar sarf malzemelerinde,</li>
+        <li>Elektronik ortamda anında ifa edilen hizmetlerde ve tüketiciye anında teslim edilen gayri maddi mallarda.</li>
+    </ul>
+
+    <h3>MADDE 10 - UYUŞMAZLIKLARIN ÇÖZÜMÜ</h3>
+
+    <p>
+        İşbu Mesafeli Satış Sözleşmesi'nin uygulanmasında, Gümrük ve Ticaret Bakanlığınca ilan edilen
+        değere kadar Alıcı'nın mal veya hizmeti satın aldığı ve ikametgahının bulunduğu yerdeki
+        Tüketici Hakem Heyetleri ile Tüketici Mahkemeleri yetkilidir.
+    </p>
+
+    <h3>MADDE 11 - MALIN / HİZMETİN FİYATI</h3>
+
+    <p>
+        Malın peşin veya vadeli satış fiyatı, sipariş formunda yer almakla birlikte,
+        sipariş sonu gönderilen bilgilendirme maili ve ürün ile birlikte müşteriye
+        gönderilen fatura içeriğinde mevcut olan fiyattır.
+    </p>
+
+    <p>
+        Satıcı tarafından yapılan indirimler, kuponlar, kargo ücreti ve sair uygulamalar
+        satış fiyatına yansıtılır.
+    </p>
+
+    <h3>MADDE 12 - TEMERRÜD HALİ VE HUKUKİ SONUÇLARI</h3>
+
+    <p>
+        Alıcı'nın kredi kartı ile yapmış olduğu işlemlerde temerrüde düşmesi halinde,
+        kart sahibi bankanın kendisi ile yapmış olduğu kredi kartı sözleşmesi çerçevesinde
+        faiz ödeyecek ve bankaya karşı sorumlu olacaktır.
+    </p>
+
+    <p>
+        Bu durumda ilgili banka hukuki yollara başvurabilir; doğacak masrafları ve vekalet
+        ücretini Alıcı'dan talep edebilir.
+    </p>
+
+    <h3>MADDE 13 - BİLDİRİMLER VE DELİL SÖZLEŞMESİ</h3>
+
+    <p>
+        İşbu Sözleşme tahtında taraflar arasında yapılacak her türlü yazışma, mevzuatta
+        sayılan zorunlu haller dışında e-mail aracılığıyla yapılacaktır.
+    </p>
+
+    <p>
+        Alıcı, işbu Sözleşme'den doğabilecek ihtilaflarda Satıcı'nın resmi defter ve ticari
+        kayıtlarıyla, kendi veritabanında ve sunucularında tuttuğu elektronik bilgilerin ve
+        bilgisayar kayıtlarının bağlayıcı, kesin ve münhasır delil teşkil edeceğini kabul eder.
+    </p>
+
+    <h3>MADDE 14 - YÜRÜRLÜK</h3>
+
+    <p>
+        14 maddeden ibaret bu Sözleşme, taraflarca okunarak, Alıcı tarafından elektronik
+        ortamda onaylanmak suretiyle akdedilmiş ve yürürlüğe girmiştir.
+    </p>
+
+    <table style="width:100%; margin-top:30px;">
+        <tr>
+            <td style="font-weight:bold;">SATICI</td>
+            <td style="font-weight:bold;">ALICI</td>
+        </tr>
+        <tr>
+            <td>GÜVEN OTOMOTİV</td>
+            <td></td>
+        </tr>
+    </table>
+
+</div>
+
+    
+
+    <div style="margin-top:25px;">
+        <a href="/">
+            <button>Ana Sayfaya Dön</button>
+        </a>
+    </div>
+
+</div>
+
+{% endblock %}

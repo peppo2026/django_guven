@@ -1,0 +1,320 @@
+{% extends "shop/base.html" %}
+
+{% block content %}
+
+<style>
+/* SADECE MOBIL SEPET DUZENI */
+@media (max-width: 900px) {
+
+    .filter-box {
+        display: none !important;
+    }
+
+    div[style*="grid-template-columns: 58% 38%"] {
+        display: block !important;
+        padding: 14px 10px !important;
+        box-sizing: border-box !important;
+    }
+
+    div[style*="grid-template-columns:80px 1fr 100px 100px 50px"] {
+        display: grid !important;
+        grid-template-columns: 75px 1fr !important;
+        gap: 8px 12px !important;
+        align-items: center !important;
+        padding: 14px 0 !important;
+        border-bottom: 1px solid #ccc !important;
+    }
+
+    div[style*="grid-template-columns:80px 1fr 100px 100px 50px"] > div:nth-child(1) {
+        grid-column: 1;
+        grid-row: 1 / span 3;
+    }
+
+    div[style*="grid-template-columns:80px 1fr 100px 100px 50px"] > div:nth-child(1) img {
+        width: 70px !important;
+        height: 60px !important;
+        object-fit: contain !important;
+    }
+
+    div[style*="grid-template-columns:80px 1fr 100px 100px 50px"] > div:nth-child(2) {
+        grid-column: 2;
+        font-size: 15px !important;
+        line-height: 20px !important;
+        color: #333 !important;
+    }
+
+    div[style*="grid-template-columns:80px 1fr 100px 100px 50px"] > div:nth-child(3) {
+        grid-column: 2;
+    }
+
+    div[style*="grid-template-columns:80px 1fr 100px 100px 50px"] > div:nth-child(3) select {
+        width: 110px !important;
+        height: 34px !important;
+        font-size: 14px !important;
+        border-radius: 8px !important;
+        border: 1px solid #aaa !important;
+    }
+
+    div[style*="grid-template-columns:80px 1fr 100px 100px 50px"] > div:nth-child(4) {
+        grid-column: 2;
+        font-size: 18px !important;
+        font-weight: bold !important;
+        color: #111 !important;
+    }
+
+    div[style*="grid-template-columns:80px 1fr 100px 100px 50px"] > div:nth-child(5) {
+        grid-column: 2;
+    }
+
+    div[style*="grid-template-columns:80px 1fr 100px 100px 50px"] > div:nth-child(5) a {
+        display: inline-block !important;
+        color: white !important;
+        background: #cc0000 !important;
+        padding: 6px 14px !important;
+        border-radius: 16px !important;
+        text-decoration: none !important;
+        font-size: 14px !important;
+    }
+
+    h3 {
+        text-align: center !important;
+        font-size: 22px !important;
+        line-height: 28px !important;
+        margin: 20px 0 12px 0 !important;
+    }
+
+    table {
+        width: 100% !important;
+        margin-top: 15px !important;
+        font-size: 16px !important;
+        line-height: 24px !important;
+        border: 1px solid #ddd !important;
+        background: #fafafa !important;
+        padding: 10px !important;
+        box-sizing: border-box !important;
+    }
+
+    table td {
+        padding: 5px 3px !important;
+        vertical-align: top !important;
+    }
+
+    label[style*="display:flex"] {
+        justify-content: center !important;
+        font-size: 16px !important;
+        margin-top: 10px !important;
+    }
+
+    label[style*="display:flex"] img {
+        height: 30px !important;
+    }
+
+    button[type="submit"] {
+        width: 80% !important;
+        max-width: 260px !important;
+        padding: 11px !important;
+        border: 0 !important;
+        border-radius: 20px !important;
+        background: #1597e5 !important;
+        color: white !important;
+        font-size: 16px !important;
+    }
+
+    div[style*="margin-top:90px"] {
+        display: none !important;
+    }
+}
+</style>
+
+
+<div style="width:100%; font-family:Arial, sans-serif;">
+
+    <div style="display:grid; grid-template-columns: 58% 38%; gap:4%; padding:20px 10px;">
+
+        <!-- SOL TARAF: SEPETTEKİ ÜRÜNLER -->
+        <div>
+
+            <h3 style="text-align:center; border-bottom:1px solid #999; padding-bottom:5px; margin-top:0;">
+                SEPETTEKİ ÜRÜNLERİNİZ
+            </h3>
+
+            {% for item in cart_items %}
+
+            <div style="display:grid; grid-template-columns:80px 1fr 100px 100px 50px; align-items:center; border-bottom:1px solid #aaa; padding:12px 0;">
+
+                <div>
+                    <a href="{% url 'product_detail' item.product.id %}" title="?r?n detay?na git">
+                        <img src="/static/{{ item.product.image }}"
+                             alt="{{ item.product.name }}"
+                             style="width:70px; height:55px; object-fit:contain;"
+                             onerror="this.onerror=null; this.src='/static/images/{{ item.product.image }}';">
+                    </a>
+                </div>
+
+                <div style="font-size:15px; color:#555; line-height:20px;">
+                    <a href="{% url 'product_detail' item.product.id %}" style="color:#0645ad; text-decoration:underline; font-weight:bold;">
+                        {{ item.product.name }}
+                    </a>
+
+
+                    {% if item.direction %}
+                        <br>
+                        <span style="color:#cc0000; font-weight:bold;">
+                            Yön:
+                            {% if item.direction == "sag" %}
+                                Sağ (Yolcu Tarafı)
+                            {% elif item.direction == "sol" %}
+                                Sol (Şoför Tarafı)
+                            {% else %}
+                                {{ item.direction }}
+                            {% endif %}
+                        </span>
+                    {% endif %}
+                </div>
+
+                <div>
+                    <form method="post" action="{% url 'update_cart_quantity' item.id %}">
+                        {% csrf_token %}
+
+                        <select name="quantity"
+                                onchange="this.form.submit()"
+                                style="width:80px; height:28px;">
+
+                            {% for number in quantity_options %}
+                                <option value="{{ number }}" {% if item.quantity == number %}selected{% endif %}>
+                                    {{ number }} Adet
+                                </option>
+                            {% endfor %}
+
+                        </select>
+                    </form>
+                </div>
+
+                <div style="font-size:15px; color:#555;">
+                    {{ item.product.price }} TL
+                </div>
+
+                <div>
+                    <a href="{% url 'remove_from_cart' item.id %}" style="color:#0645ad; text-decoration:underline;">
+                        Sil
+                    </a>
+                </div>
+
+            </div>
+
+            {% empty %}
+
+            <div style="padding:30px; text-align:center; color:#555; border:1px solid #ddd; background:#f9f9f9;">
+                <div style="font-size:20px; font-weight:bold; margin-bottom:15px;">
+                    Sepetiniz boş.
+                </div>
+
+                <div style="font-size:15px; margin-bottom:20px;">
+                    Alışverişe devam ederek ürünleri sepetinize ekleyebilirsiniz.
+                </div>
+
+                <a href="/">
+                    <button style="padding:6px 15px;">
+                        Alışverişe Devam Et
+                    </button>
+                </a>
+            </div>
+
+            {% endfor %}
+
+            
+
+        </div>
+
+        {% if cart_items %}
+
+        <!-- SAĞ TARAF: SİPARİŞ ÖZETİ -->
+        <div>
+
+            <h3 style="font-weight:bold; margin-top:0;">
+                SİPARİŞİNİZİN ÖZETİ
+            </h3>
+
+            <table style="font-size:17px; font-weight:bold; color:#555; line-height:28px; margin-top:60px;">
+                <tr>
+                    <td style="width:150px;">Ürün Sayısı</td>
+                    <td style="width:20px;">:</td>
+                    <td>{{ cart_items|length }} Adet</td>
+                </tr>
+
+                <tr>
+                    <td>Kargo Ücreti</td>
+                    <td>:</td>
+                    <td>0,00 TL</td>
+                </tr>
+
+                <tr>
+                    <td>Ödenecek Tutar</td>
+                    <td>:</td>
+                    <td>{{ total_price }} TL (KDV Dahil)</td>
+                </tr>
+            </table>
+
+            <div style="margin-top:35px;">
+
+                <h3 style="font-weight:bold;">
+                    ÖDEME YÖNTEMİNİ SEÇİNİZ
+                </h3>
+
+                <label style="font-size:17px; color:#555; display:flex; align-items:center; gap:10px;">
+                    <input type="radio" name="payment_method" value="havale" checked>
+                    EFT / Havale
+
+                    <img src="/static/images/odeme/eft_havale.png"
+                         alt="EFT Havale"
+                         style="height:35px;">
+                </label>
+
+            </div>
+
+           {% if cart_items %}
+            <div style="text-align:center; margin-top:65px;">
+                <form method="post" action="{% url 'complete_order' %}">
+                    {% csrf_token %}
+
+                    <button type="submit" style="padding:5px 12px;">
+                        Siparişi Tamamla
+                    </button>
+                </form>
+            </div>
+            {% else %}
+            <div style="text-align:center; margin-top:65px; color:#777; font-weight:bold;">
+                Sepetiniz boş olduğu için sipariş tamamlanamaz.
+            </div>
+            {% endif %}
+            <div style="margin-top:90px; color:#555;">
+
+                <h4 style="font-weight:bold;">
+                    İNTERNETTE GÜVENLİ ALIŞVERİŞ
+                </h4>
+
+                <p style="font-size:16px;">
+                    256 bit SSL sertifikası ile korunmaktadır.
+                </p>
+
+                <div style="margin-top:25px;">
+                    <img src="/static/images/odeme/comodo_secure.png"
+                         alt="Comodo Secure"
+                         style="height:65px; margin-right:20px;">
+
+                    <img src="/static/images/odeme/ssl_256.png"
+                         alt="256 bit SSL"
+                         style="height:65px;">
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+{% endblock %}

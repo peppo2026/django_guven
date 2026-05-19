@@ -1,0 +1,297 @@
+{% extends "shop/base.html" %}
+
+{% block content %}
+
+
+<style>
+/* MOBILE HOME PRODUCT ACTION BUTTONS */
+@media (max-width: 900px) {
+
+    .product-links {
+        background: transparent !important;
+        text-align: center !important;
+        padding: 0 !important;
+        margin-top: 10px !important;
+    }
+
+    .product-links a {
+        display: block !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        padding: 9px 10px !important;
+        margin: 7px 0 !important;
+        border-radius: 18px !important;
+        font-size: 15px !important;
+        font-weight: bold !important;
+        text-decoration: none !important;
+        text-align: center !important;
+    }
+
+    .product-links a:first-child {
+        background: #fff8d6 !important;
+        color: #111 !important;
+        border: 1px solid #d6a600 !important;
+    }
+
+    .product-links a:last-child {
+        background: #1597e5 !important;
+        color: white !important;
+        border: 1px solid #1597e5 !important;
+    }
+
+    .product-links br {
+        display: none !important;
+    }
+}
+</style>
+
+
+<div class="home-slider">
+    <img src="/static/images/dizayn/slayt1.png" class="home-slide active">
+    <img src="/static/images/dizayn/slayt2.png" class="home-slide">
+    <img src="/static/images/dizayn/slayt3.png" class="home-slide">
+    <img src="/static/images/dizayn/slayt4.gif" class="home-slide">
+    <img src="/static/images/dizayn/slayt5.gif" class="home-slide">
+    <img src="/static/images/dizayn/slayt6.gif" class="home-slide">
+    <img src="/static/images/dizayn/slayt7.gif" class="home-slide">
+</div>
+
+<style>
+    .home-slider {
+        width: 900px;
+        height: 260px;
+        margin: 0 auto 10px auto;
+        position: relative;
+        overflow: hidden;
+        background: white;
+    }
+
+    .home-slide {
+        width: 900px;
+        height: 260px;
+        object-fit: cover;
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    .home-slide.active {
+        display: block;
+    }
+
+    .mobile-home-comments {
+        display: none;
+    }
+
+    /* SADECE MOBIL HOME DUZENI */
+    @media (max-width: 900px) {
+
+        .home-slider {
+            width: 100%;
+            max-width: 100%;
+            height: 135px;
+            margin: 5px auto 8px auto;
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+            background: white;
+        }
+
+        .home-slide {
+            width: 100%;
+            height: 135px;
+            object-fit: contain;
+            background: white;
+        }
+
+        .title {
+            font-size: 21px !important;
+            line-height: 25px !important;
+            margin: 12px 0 14px !important;
+        }
+
+        .mobile-home-comments {
+            display: block;
+            margin: 22px 8px 12px 8px;
+            border: 1px solid #d6a600;
+            background: #fff7e7;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .mobile-home-comments-title {
+            background: #111;
+            color: #d6a600;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px 12px;
+            text-align: center;
+        }
+
+        .mobile-home-comment-item {
+            padding: 10px 12px;
+            border-bottom: 1px solid #e2c98a;
+            font-size: 14px;
+            line-height: 19px;
+        }
+
+        .mobile-home-comment-item:last-child {
+            border-bottom: 0;
+        }
+
+        .mobile-home-comment-author {
+            font-weight: bold;
+            color: #111;
+            margin-bottom: 4px;
+        }
+
+        .mobile-home-comment-text {
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .mobile-home-comment-link a {
+            color: #0645ad;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+
+        .mobile-home-comment-date {
+            margin-top: 4px;
+            font-size: 12px;
+            color: #777;
+            font-weight: bold;
+        }
+    }
+
+    /* TELEFON YATAYDA SLIDER BIRAZ DAHA INCE */
+    @media (min-width: 769px) and (max-width: 900px) and (orientation: landscape) {
+        .home-slider {
+            height: 115px;
+            margin-top: 4px;
+        }
+
+        .home-slide {
+            height: 115px;
+        }
+    }
+</style>
+
+<div class="title">
+    YENİ GELEN ÜRÜNLERİMİZ
+</div>
+
+<div class="products">
+
+    {% for product in products %}
+    <div class="product-card">
+
+        <a href="{% url 'product_detail' product.id %}">
+            <img src="/static/{{ product.image }}" alt="{{ product.name }}" onerror="this.onerror=null; this.src='/static/images/{{ product.image }}';">
+        </a>
+
+        <div class="product-name">
+            {{ product.name }}
+        </div>
+
+        <div class="product-price">
+            {{ product.price }} TL
+        </div>
+
+        <div class="product-links">
+            <a href="{% url 'product_detail' product.id %}">İncele</a><br>
+            <a href="{% url 'add_to_cart' product.id %}">Sepete Ekle</a>
+        </div>
+
+    </div>
+    {% empty %}
+    <div style="font-size:18px; padding:20px; color:#333;">
+        Ürün bulunamadı.
+    </div>
+    {% endfor %}
+
+</div>
+
+<div class="pagination">
+    {% if products.has_previous %}
+        <a class="page-button" href="?sayfa={{ products.previous_page_number }}">&lt; Önceki</a>
+    {% else %}
+        <span class="page-button">&lt; Önceki</span>
+    {% endif %}
+
+    <a href="?sayfa=1" class="{% if products.number == 1 %}active-page{% endif %}">1</a>
+    <a href="?sayfa=2" class="{% if products.number == 2 %}active-page{% endif %}">2</a>
+    <a href="?sayfa=3" class="{% if products.number == 3 %}active-page{% endif %}">3</a>
+    <a href="?sayfa=4" class="{% if products.number == 4 %}active-page{% endif %}">4</a>
+    <a href="?sayfa=5" class="{% if products.number == 5 %}active-page{% endif %}">5</a>
+    <a href="?sayfa=6" class="{% if products.number == 6 %}active-page{% endif %}">6</a>
+    <a href="?sayfa=7" class="{% if products.number == 7 %}active-page{% endif %}">7</a>
+
+    {% if products.has_next %}
+        <a class="page-button" href="?sayfa={{ products.next_page_number }}">Sonraki &gt;</a>
+    {% else %}
+        <span class="page-button">Sonraki &gt;</span>
+    {% endif %}
+</div>
+
+<div class="mobile-home-comments">
+    <div class="mobile-home-comments-title">
+        Son Yorumlar
+    </div>
+
+    {% if latest_comments %}
+        {% for comment in latest_comments|slice:":3" %}
+            <div class="mobile-home-comment-item">
+                <div class="mobile-home-comment-author">
+                    {{ comment.author_name }}
+                </div>
+
+                <div class="mobile-home-comment-text">
+                    {{ comment.text|truncatechars:85 }}
+                </div>
+
+                <div class="mobile-home-comment-link">
+                    <a href="{% url 'product_detail' comment.product.id %}#comment-{{ comment.id }}">
+                        Yoruma git
+                    </a>
+                </div>
+
+                <div class="mobile-home-comment-date">
+                    {{ comment.date_text }}
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="mobile-home-comment-item">
+            Henüz yorum bulunmuyor.
+        </div>
+    {% endif %}
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const slides = document.querySelectorAll(".home-slide");
+        let current = 0;
+
+        function showSlide(index) {
+            slides.forEach(function (slide) {
+                slide.classList.remove("active");
+            });
+
+            slides[index].classList.add("active");
+        }
+
+        setInterval(function () {
+            current = current + 1;
+
+            if (current >= slides.length) {
+                current = 0;
+            }
+
+            showSlide(current);
+        }, 3000);
+    });
+</script>
+
+{% endblock %}
