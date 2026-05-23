@@ -257,22 +257,46 @@ def register_view(request):
 
 def login_view(request):
     if request.method == "POST":
-        username_or_email = request.POST.get("username")
-        password = request.POST.get("password")
+        username_or_email = request.POST.get("username", "").strip()
+        password = request.POST.get("password", "")
 
         user = authenticate(request, username=username_or_email, password=password)
 
         if user is None:
-            try:
-                user_obj = User.objects.get(email=username_or_email)
+            user_obj = User.objects.filter(email__iexact=username_or_email).first()
+
+            if user_obj:
                 user = authenticate(request, username=user_obj.username, password=password)
-            except User.DoesNotExist:
-                user = None
+            else:
+                if "@" in username_or_email and password:
+                    username = username_or_email
+                    counter = 1
+
+                    while User.objects.filter(username=username).exists():
+                        username = f"{username_or_email}_{counter}"
+                        counter += 1
+
+                    user = User.objects.create_user(
+                        username=username,
+                        email=username_or_email,
+                        password=password
+                    )
+
+                    UserProfile.objects.create(
+                        user=user,
+                        phone="",
+                        address=""
+                    )
+
+                    request.session["profile_incomplete"] = True
 
         if user is not None:
             login(request, user)
 
             request.session["login_count"] = request.session.get("login_count", 0) + 1
+
+            if request.session.get("profile_incomplete"):
+                return redirect("account")
 
             return redirect("login")
 
@@ -282,39 +306,50 @@ def login_view(request):
 
     return render(request, "shop/login.html")
 
-
 @login_required
 def account_view(request):
     orders = Order.objects.filter(user=request.user).order_by("-created_at")
     profile = UserProfile.objects.filter(user=request.user).first()
 
-    if request.method == "POST":
-        phone = request.POST.get("phone", "")
-        address = request.POST.get("address", "")
-        email = request.POST.get("email", "")
+    if profile is None:
+        profile = UserProfile.objects.create(
+            user=request.user,
+            phone="",
+            address=""
+        )
 
+    profile_incomplete = (
+        not request.user.first_name.strip()
+        or not request.user.last_name.strip()
+        or not profile.phone.strip()
+        or not profile.address.strip()
+    )
+
+    if request.method == "POST":
+        first_name = request.POST.get("first_name", "").strip()
+        last_name = request.POST.get("last_name", "").strip()
+        phone = request.POST.get("phone", "").strip()
+        address = request.POST.get("address", "").strip()
+        email = request.POST.get("email", "").strip()
+
+        request.user.first_name = first_name
+        request.user.last_name = last_name
         request.user.email = email
         request.user.save()
 
-        if profile is None:
-            profile = UserProfile.objects.create(
-                user=request.user,
-                phone=phone,
-                address=address
-            )
-        else:
-            profile.phone = phone
-            profile.address = address
-            profile.save()
+        profile.phone = phone
+        profile.address = address
+        profile.save()
+
+        request.session["profile_incomplete"] = False
 
         return redirect("account")
 
     return render(request, "shop/account.html", {
         "orders": orders,
-        "profile": profile
+        "profile": profile,
+        "profile_incomplete": profile_incomplete,
     })
-
-
 
 @login_required
 def change_password_view(request):
