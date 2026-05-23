@@ -2,6 +2,49 @@
 
 {% block content %}
 
+
+<style>
+/* MOBILE CART PAYMENT IMAGE */
+@media (max-width: 900px) {
+
+    label[style*="display:flex"] {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 12px !important;
+        flex-wrap: wrap !important;
+        background: #fff8d6 !important;
+        border: 1px solid #d6a600 !important;
+        border-radius: 12px !important;
+        padding: 12px !important;
+        font-size: 17px !important;
+        font-weight: bold !important;
+        color: #333 !important;
+    }
+
+    label[style*="display:flex"] input[type="radio"] {
+        transform: scale(1.25);
+        margin-right: 4px !important;
+    }
+
+    label[style*="display:flex"] img {
+        height: 52px !important;
+        max-width: 170px !important;
+        width: auto !important;
+        object-fit: contain !important;
+        background: white !important;
+        border-radius: 8px !important;
+        padding: 5px !important;
+        box-sizing: border-box !important;
+        border: 1px solid #eee !important;
+    }
+}
+</style>
+
+
+
+
+
 <style>
 /* SADECE MOBIL SEPET DUZENI */
 @media (max-width: 900px) {
