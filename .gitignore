@@ -44,3 +44,5 @@ scraping/*.html
 # Local downloaded extra product images - do not push unless needed
 static/images/urunler/k/
 static/images/urunler/orj/
+
+scraping/
