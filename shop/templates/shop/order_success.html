@@ -32,6 +32,37 @@
         line-height: 24px !important;
     }
 
+    .payment-warning-box {
+        padding: 12px !important;
+        margin-top: 22px !important;
+        margin-bottom: 16px !important;
+        border-radius: 10px !important;
+    }
+
+    .payment-warning-title {
+        font-size: 20px !important;
+        line-height: 26px !important;
+    }
+
+    .payment-warning-text {
+        font-size: 15px !important;
+        line-height: 24px !important;
+    }
+
+    .whatsapp-info-box {
+        margin-top: 16px !important;
+        margin-bottom: 18px !important;
+        text-align: center !important;
+    }
+
+    .whatsapp-info-box img {
+        width: 100% !important;
+        max-width: 360px !important;
+        height: auto !important;
+        box-sizing: border-box !important;
+        border-radius: 10px !important;
+    }
+
     div[style*="font-size:26px"] {
         font-size: 22px !important;
         text-align: center !important;
@@ -104,20 +135,16 @@
     <p style="font-size:18px;">
         Sayın
         <b>
-            {% if request.user.first_name or request.user.last_name %}
-                {{ request.user.first_name }} {{ request.user.last_name }}
+            {% if order.customer_name %}
+                {{ order.customer_name }}
             {% else %}
-                {{ request.user.username }}
+                {{ request.user.get_full_name|default:request.user.username }}
             {% endif %}
         </b>,
     </p>
 
     <p style="font-size:18px; line-height:28px;">
         Sipariş verdiğiniz ürünler karşılığı
-        <b>{{ order.total_price }} TL</b>
-        tutarı aşağıdaki hesap numarasına ödeyebilirsiniz.Sipariş verdiğiniz
-        <b>{{ order.items.count }}</b>
-        kalem ürün karşılığı
         <b>{{ order.total_price }} TL</b>
         tutarı aşağıdaki hesap numarasına ödeyebilirsiniz.
     </p>
@@ -136,6 +163,30 @@
         Her konuda bizimle iletişime geçebilirsiniz.
         Müşteri memnuniyeti bizim için önemlidir.
     </p>
+
+    <div class="payment-warning-box" style="margin-top:28px; margin-bottom:18px; padding:16px; background:#fff4f4; border:2px solid #d60000; border-radius:10px; text-align:center;">
+        <div class="payment-warning-title" style="font-size:22px; font-weight:bold; color:#d60000; margin-bottom:10px;">
+            ÖNEMLİ BİLGİLENDİRME
+        </div>
+
+        <div class="payment-warning-text" style="font-size:17px; line-height:28px; color:#b10000; font-weight:bold;">
+            Ödemenizi yaptıktan sonra banka dekontunu WhatsApp numaramıza gönderiniz.
+            Dekontunuz kontrol edildikten sonra siparişiniz onaylanır ve kargonuz hazırlanır.
+        </div>
+
+        <div class="payment-warning-text" style="font-size:17px; line-height:28px; color:#b10000; font-weight:bold; margin-top:8px;">
+            Saat <span style="font-size:19px;">15:00</span>'a kadar ödemesi onaylanan siparişler aynı gün kargoya verilir.
+            15:00 sonrası onaylanan siparişler bir sonraki iş gününe kalabilir.
+        </div>
+
+        
+    </div>
+
+    <div class="whatsapp-info-box" style="margin-top:18px; margin-bottom:22px; text-align:center;">
+        <img src="/static/images/dizayn/slayt4.gif"
+             alt="WhatsApp Bilgi"
+             style="max-width:100%; width:360px; height:auto; border:1px solid #ccc; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+    </div>
 
     <div style="margin-top:30px; font-size:26px; font-weight:bold; color:#222;">
         VakıfBank

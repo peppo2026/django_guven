@@ -2,49 +2,6 @@
 
 {% block content %}
 
-
-<style>
-/* MOBILE CART PAYMENT IMAGE */
-@media (max-width: 900px) {
-
-    label[style*="display:flex"] {
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        gap: 12px !important;
-        flex-wrap: wrap !important;
-        background: #fff8d6 !important;
-        border: 1px solid #d6a600 !important;
-        border-radius: 12px !important;
-        padding: 12px !important;
-        font-size: 17px !important;
-        font-weight: bold !important;
-        color: #333 !important;
-    }
-
-    label[style*="display:flex"] input[type="radio"] {
-        transform: scale(1.25);
-        margin-right: 4px !important;
-    }
-
-    label[style*="display:flex"] img {
-        height: 52px !important;
-        max-width: 170px !important;
-        width: auto !important;
-        object-fit: contain !important;
-        background: white !important;
-        border-radius: 8px !important;
-        padding: 5px !important;
-        box-sizing: border-box !important;
-        border: 1px solid #eee !important;
-    }
-}
-</style>
-
-
-
-
-
 <style>
 /* SADECE MOBIL SEPET DUZENI */
 @media (max-width: 900px) {
@@ -146,6 +103,7 @@
         justify-content: center !important;
         font-size: 16px !important;
         margin-top: 10px !important;
+        flex-wrap: wrap !important;
     }
 
     label[style*="display:flex"] img {
@@ -160,6 +118,28 @@
         border-radius: 20px !important;
         background: #1597e5 !important;
         color: white !important;
+        font-size: 16px !important;
+    }
+
+    .cart-action-buttons {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 10px !important;
+        margin-top: 35px !important;
+    }
+
+    .cart-action-buttons a,
+    .cart-action-buttons form {
+        width: 100% !important;
+        max-width: 280px !important;
+        margin: 0 !important;
+    }
+
+    .cart-action-buttons button {
+        width: 100% !important;
+        box-sizing: border-box !important;
+        padding: 11px !important;
         font-size: 16px !important;
     }
 
@@ -186,7 +166,7 @@
             <div style="display:grid; grid-template-columns:80px 1fr 100px 100px 50px; align-items:center; border-bottom:1px solid #aaa; padding:12px 0;">
 
                 <div>
-                    <a href="{% url 'product_detail' item.product.id %}" title="?r?n detay?na git">
+                    <a href="{% url 'product_detail' item.product.id %}" title="Ürün detayına git">
                         <img src="/static/{{ item.product.image }}"
                              alt="{{ item.product.name }}"
                              style="width:70px; height:55px; object-fit:contain;"
@@ -198,7 +178,6 @@
                     <a href="{% url 'product_detail' item.product.id %}" style="color:#0645ad; text-decoration:underline; font-weight:bold;">
                         {{ item.product.name }}
                     </a>
-
 
                     {% if item.direction %}
                         <br>
@@ -265,8 +244,6 @@
 
             {% endfor %}
 
-            
-
         </div>
 
         {% if cart_items %}
@@ -315,21 +292,26 @@
 
             </div>
 
-           {% if cart_items %}
-            <div style="text-align:center; margin-top:65px;">
-                <form method="post" action="{% url 'complete_order' %}">
+            <div class="cart-action-buttons" style="text-align:center; margin-top:65px; display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
+
+                <a href="/" style="text-decoration:none;">
+                    <button type="button"
+                            style="padding:7px 16px; border:1px solid #d6a600; background:#fff8d6; color:#111; font-weight:bold; border-radius:18px; cursor:pointer;">
+                        Alışverişe Devam Et
+                    </button>
+                </a>
+
+                <form method="post" action="{% url 'complete_order' %}" style="margin:0;">
                     {% csrf_token %}
 
-                    <button type="submit" style="padding:5px 12px;">
+                    <button type="submit"
+                            style="padding:7px 16px; border:0; background:#1597e5; color:white; font-weight:bold; border-radius:18px; cursor:pointer;">
                         Siparişi Tamamla
                     </button>
                 </form>
+
             </div>
-            {% else %}
-            <div style="text-align:center; margin-top:65px; color:#777; font-weight:bold;">
-                Sepetiniz boş olduğu için sipariş tamamlanamaz.
-            </div>
-            {% endif %}
+
             <div style="margin-top:90px; color:#555;">
 
                 <h4 style="font-weight:bold;">

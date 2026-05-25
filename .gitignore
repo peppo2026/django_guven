@@ -12,3 +12,21 @@ scraping/*.json
 scraping/*.html
 
 .env
+
+@'
+
+# Local / backup / sensitive cleanup
+*.sqlite3
+db_backup_*.sqlite3
+*.log
+*.tmp
+*.bak
+*.zip
+git_status_*.txt
+__pycache__/
+*.pyc
+.env
+.env.*
+.DS_Store
+Thumbs.db
+'@ | Add-Content .gitignore
